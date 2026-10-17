@@ -1,0 +1,42 @@
+[
+  {
+    "id": "aquarium",
+    "file": "aquarium.webp",
+    "title": "Okinawa Aquarium",
+    "author": "Jordy Meow",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Okinawa_Aquarium.jpg",
+    "changes": "縮小、轉為 WebP；網站以 CSS 裁切顯示，照片衍生檔維持原授權。"
+  },
+  {
+    "id": "mibaru",
+    "file": "mibaru.webp",
+    "title": "南城市新原ビーチの西端 - panoramio",
+    "author": "Toshihiro Matsui",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source": "https://commons.wikimedia.org/wiki/File:%E5%8D%97%E5%9F%8E%E5%B8%82%E6%96%B0%E5%8E%9F%E3%83%93%E3%83%BC%E3%83%81%E3%81%AE%E8%A5%BF%E7%AB%AF_-_panoramio.jpg",
+    "changes": "縮小、轉為 WebP；網站以 CSS 裁切顯示，照片衍生檔維持原授權。"
+  },
+  {
+    "id": "kouri",
+    "file": "kouri.webp",
+    "title": "Kouri Bridge (15130568259)",
+    "author": "Takuya ASADA",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Kouri_Bridge_(15130568259).jpg",
+    "changes": "縮小、轉為 WebP；網站以 CSS 裁切顯示，照片衍生檔維持原授權。"
+  },
+  {
+    "id": "ou",
+    "file": "ou.webp",
+    "title": "Ou Island Nanjo 202208",
+    "author": "Kugel~commonswiki",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Ou_Island_Nanjo_202208.jpg",
+    "changes": "縮小、轉為 WebP；網站以 CSS 裁切顯示，照片衍生檔維持原授權。"
+  }
+]

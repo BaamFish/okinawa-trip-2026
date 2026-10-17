@@ -1,0 +1,10 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+const trip=JSON.parse(fs.readFileSync('src/data/itinerary.json','utf8'));
+const source=JSON.parse(fs.readFileSync('src/data/source-reviewed.json','utf8')).text;
+const credits=JSON.parse(fs.readFileSync('src/data/credits.json','utf8'));
+test('四日日期、導航與本地圖片完整',()=>{assert.equal(trip.days.length,4);const ids=new Set;trip.days.forEach((d,i)=>{assert.equal(d.date,`2026-12-${25+i}`);assert.ok(d.items.length>=5);for(const item of d.items){assert.ok(!ids.has(item.id));ids.add(item.id);assert.ok(fs.existsSync(`public/images/${item.image}`));assert.ok(item.summary&&item.status&&item.transport&&item.note&&item.sourceHeading);if(!item.query)assert.match(item.title,/還車/);assert.ok(source.includes(item.sourceHeading));for(const line of item.details)assert.ok(source.includes(line))}})});
+test('來源正文的每日文字完整保留於詳細安排',()=>{const start=source.indexOf('━━━━━━━━━━  DAY 1');const end=source.indexOf('\n已確認資訊',start);const content=trip.days.flatMap(d=>d.items.flatMap(i=>[i.sourceHeading,...i.details])).join('\n');for(const line of source.slice(start,end).split('\n').map(x=>x.trim()).filter(Boolean)){if(line.includes('━━━━')||/^Day [1-4]｜/.test(line))continue;assert.ok(content.includes(line),`Unmapped source paragraph: ${line}`)}});
+test('已確認、候選與未知地點不混淆',()=>{const items=trip.days.flatMap(d=>d.items);assert.match(items.find(i=>i.title==='新原玻璃底船').status,/已預訂/);const village=items.find(i=>i.title.includes('美國村'));assert.match(village.status,/候選/);const rental=items.find(i=>i.title==='還車');assert.equal(rental.query,'');assert.match(rental.status,/地點待確認/);const data=JSON.stringify(trip);assert.ok(!/gh[pousr]_[A-Za-z0-9]{20,}|github_pat_[A-Za-z0-9_]{20,}|[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i.test(data));});
+test('文件費用總額與圖片授權紀錄',()=>{assert.equal(22762+5927+3250+2442+1436,35817);assert.equal(credits.length,4);for(const c of credits){assert.ok(c.author&&c.license&&c.licenseUrl&&c.source);assert.ok(fs.existsSync(`public/images/${c.file}`))}});
